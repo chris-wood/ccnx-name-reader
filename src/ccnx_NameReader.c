@@ -15,10 +15,10 @@
 
 #include <ccnx/common/ccnx_Name.h>
 
-typedef struct {
+struct ccnx_name_reader {
     PARCFile *sourceFile;
     int fd;
-} CCNxNameReader;
+};
 
 static bool
 _ccnxNameReader_Destructor(CCNxNameReader **statsPtr)
@@ -90,7 +90,6 @@ _ccnxNameReaderIterator_HasNext(CCNxNameReader *group, void *voidstate)
     return !(state->atEnd && state->leftover == NULL);
 }
 
-#include <stdio.h>
 
 static void *
 _ccnxNameReaderIterator_Next(CCNxNameReader *group, void *state)
